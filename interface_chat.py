@@ -5,8 +5,8 @@ import os
 STATUS_COMPLETED = "completed"
 
 class InterfaceChat():
-  def __init__(self, nome :str, instrucoes : str, caminho_arquivo : str):
-    self.chat : AssistenteBase = AssistenteBase(nome=nome, instrucoes=instrucoes, caminho_arquivo=caminho_arquivo)
+  def __init__(self, assistente):
+    self.chat : AssistenteBase = assistente
     self.mensagens = []
   
   def conversar(self, mensagem_usuario : str):

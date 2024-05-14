@@ -3,14 +3,19 @@ from openai.types.beta.assistant import Assistant
 from openai.types.beta.thread import Thread
 from dotenv import load_dotenv
 import os
+from abc import ABC, abstractmethod
 
-class AssistenteBase():
+class AssistenteBase(ABC):
   def __init__(self, nome : str, instrucoes : str, caminho_arquivo : str):
     load_dotenv()
     self.cliente : OpenAI = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     self.id_arquivo : str = self.associar_arquivo(caminho_arquivo=caminho_arquivo)
     self.assistente : Assistant = self.criar_assistente(nome=nome, instrucoes=instrucoes, file_id=self.id_arquivo)
     self.thread : Thread = self.criar_thread()
+
+  @abstractmethod
+  def gerar_resposta(self):
+    pass
 
   def associar_arquivo(self, caminho_arquivo : str):
     novo_arquivo = self.cliente.files.create(
