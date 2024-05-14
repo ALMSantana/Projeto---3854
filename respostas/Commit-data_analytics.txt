@@ -1,58 +1,32 @@
 ### Análise do Código
 
-O script fornece uma classe chamada `dataanalytics` para realizar várias análises em dados relacionados ao Twitch. Abaixo estão os detalhes dos métodos implementados na classe:
+Pelo conteúdo parcial do script, podemos identificar as seguintes funcionalidades:
 
-#### 1. `__init__(self, data : DataFrame)`
-Este é o inicializador da classe, responsável por:
-- Receber um DataFrame (`data`) contendo os dados a serem analisados.
-- Criar uma cópia do DataFrame (`copy_data`).
-- Armazenar o DataFrame original no atributo `data_backup`.
-- Inicializar um DataFrame vazio (`temp_data`) e um dicionário de cache (`cache`).
-
-#### 2. `getTopChannelByViewers(self, top_n=10)`
-Calcula e retorna os canais com mais espectadores (viewers).
-- Agrupa os dados pelo nome do canal e soma o tempo de visualização em minutos.
-- Retorna os top `n` canais com maior tempo de visualização.
-
-#### 3. `getStreamerStats(self, streamer : str)`
-Calcula e retorna as estatísticas de um streamer específico.
-- Filtra os dados pelo nome do streamer.
-- Calcula a média de espectadores, o tempo total de visualização e o tempo total de transmissão.
-- Retorna as estatísticas em formato JSON.
-
-#### 4. `getTopChannelByStreamTime(self, top_n=10)`
-Calcula e retorna os canais com mais tempo de transmissão.
-- Agrupa os dados pelo nome do canal e soma o tempo de transmissão em minutos.
-- Retorna os top `n` canais com maior tempo de transmissão.
-
-#### 5. `getAverageViewersByChannel(self, top_n=10)`
-Calcula e retorna a média de espectadores por canal.
-- Agrupa os dados pelo nome do canal e calcula a média de espectadores.
-- Retorna os top `n` canais com a maior média de espectadores.
+- **Classe `dataanalytics`**:
+  - **`__init__`**: Inicializa a classe com um DataFrame e cria várias cópias e estruturas auxiliares de dados.
+  - **`getTopChannelByViewers`**: Retorna os principais canais com mais espectadores com base no tempo de visualização.
+  - **`getStreamerStats`**: Retorna as estatísticas de um streamer específico, como média de espectadores, tempo total de visualização e tempo de transmissão.
+  - **`getTopChannelByStreamTime`**: Retorna os principais canais com mais tempo de transmissão.
+  - **`getAverageViewersByChannel`**: Calcula e retorna a média de espectadores dos principais canais.
 
 ### Sugestão de Commit
 
-Com base nas funcionalidades descritas e nas práticas recomendadas para mensagens de commit, aqui está uma sugestão de commit:
+Dado que é a primeira versão do script, a sugestão de commit seria:
 
----
-
-**Título do Commit:**
-
+#### Título do Commit
 ```
-✨ :sparkles: Adiciona classe para análise de dados do Twitch
+:sparkles: :chart_with_upwards_trend: Adiciona classe para análises de dados do Twitch
 ```
 
-**Descrição do Commit:**
-
+#### Descrição do Commit
 ```
-- Implementa a classe `dataanalytics` para análise de dados do Twitch.
-- `__init__`: Inicializa a classe com DataFrame e configura estruturas de dados internas.
-- `getTopChannelByViewers`: Retorna os canais com maior tempo de visualização.
-- `getStreamerStats`: Retorna estatísticas detalhadas de um streamer específico.
-- `getTopChannelByStreamTime`: Retorna os canais com maior tempo de transmissão.
-- `getAverageViewersByChannel`: Retorna a média de espectadores por canal.
+- Implementa a classe `dataanalytics` com métodos para análise de dados de canais do Twitch.
+- Métodos implementados:
+  - `__init__`: Inicializa a classe com DataFrame e cria estruturas auxiliares.
+  - `getTopChannelByViewers`: Retorna os principais canais por tempo de visualização.
+  - `getStreamerStats`: Retorna estatísticas de um streamer específico.
+  - `getTopChannelByStreamTime`: Retorna os principais canais por tempo de transmissão.
+  - `getAverageViewersByChannel`: Calcula a média de espectadores dos canais principais.
 ```
 
----
-
-Esta mensagem de commit é clara e engloba as funcionalidades principais da classe, permitindo que outros desenvolvedores compreendam facilmente as alterações introduzidas.
+Essa mensagem de commit abrange a introdução da classe e destaca os métodos principais implementados, atendendo às boas práticas de commits.

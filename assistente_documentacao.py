@@ -2,12 +2,13 @@ from assistente_base import AssistenteBase
 
 class AssistenteDocumentacao(AssistenteBase):
   def __init__(self, caminho_arquivo: str):
+    self.caminho_arquivo = caminho_arquivo
     self.nome = self.get_nome_assistente()
     self.instrucoes = self.get_instrucoes_assistente()
     super().__init__(self.nome, self.instrucoes, caminho_arquivo)
 
   def gerar_resposta(self):
-    pass
+    return super().gerar_resposta()
 
   def get_nome_assistente(self):
     return "Assistente de Documentação"

@@ -1,6 +1,7 @@
 from openai import OpenAI
 from assistente_base import AssistenteBase
 from assistente_commit import AssistenteCommit
+from assistente_documentacao import AssistenteDocumentacao
 from util_io import salvar_resposta_ia
 import os
 
@@ -21,6 +22,8 @@ class InterfaceChat():
 
     if isinstance(self.chat, AssistenteCommit):
       salvar_resposta_ia(self.chat.caminho_arquivo, dados_salvos, "Commit")
+    elif isinstance(self.chat, AssistenteDocumentacao):
+      salvar_resposta_ia(self.chat.caminho_arquivo, dados_salvos, "Documentacao")
 
   def conversar(self, mensagem_usuario : str):
     self.chat.cliente.beta.threads.messages.create(
