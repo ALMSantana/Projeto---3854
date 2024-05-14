@@ -44,6 +44,6 @@ class InterfaceChat():
     return self.mensagens
   
   def apagar_assistente_completamente(self):
-    self.chat.apagar_arquivo_openai(self.chat.id_arquivo)
-    self.chat.apagar_thread(self.chat.thread.id)
-    self.chat.apagar_assistente(self.chat.assistente.id)
+    self.chat.apagar_arquivo_openai()
+    self.chat.apagar_thread()
+    self.chat.apagar_assistente()

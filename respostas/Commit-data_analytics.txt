@@ -1,56 +1,58 @@
-Aqui está a análise e a descrição dos métodos contidos na classe `dataanalytics` no script analisado:
+### Análise do Código
 
-### Classe `dataanalytics`
+O script fornece uma classe chamada `dataanalytics` para realizar várias análises em dados relacionados ao Twitch. Abaixo estão os detalhes dos métodos implementados na classe:
 
-#### `__init__(self, data: DataFrame)`
-Inicializa a classe:
-- **Parâmetros**: `data` (DataFrame) - o conjunto de dados inicial.
-- **Atributos**: `self.data`, `self.copy_data`, `self.data_backup`, `self.temp_data`, `self.cache`.
+#### 1. `__init__(self, data : DataFrame)`
+Este é o inicializador da classe, responsável por:
+- Receber um DataFrame (`data`) contendo os dados a serem analisados.
+- Criar uma cópia do DataFrame (`copy_data`).
+- Armazenar o DataFrame original no atributo `data_backup`.
+- Inicializar um DataFrame vazio (`temp_data`) e um dicionário de cache (`cache`).
 
-#### `getTopChannelByViewers(self, top_n=10)`
-Obtém os principais canais pelo tempo de visualização:
-- **Parâmetros**: `top_n` (opcional, padrão é 10) - o número de canais a serem retornados.
-- **Retorno**: DataFrame com os principais canais pelo tempo de visualização.
+#### 2. `getTopChannelByViewers(self, top_n=10)`
+Calcula e retorna os canais com mais espectadores (viewers).
+- Agrupa os dados pelo nome do canal e soma o tempo de visualização em minutos.
+- Retorna os top `n` canais com maior tempo de visualização.
 
-#### `getStreamerStats(self, streamer: str)`
-Obtém estatísticas de um streamer específico:
-- **Parâmetros**: `streamer` (str) - nome do streamer.
-- **Retorno**: JSON com estatísticas do streamer (visualizações médias, tempo total de visualização, tempo de transmissão).
+#### 3. `getStreamerStats(self, streamer : str)`
+Calcula e retorna as estatísticas de um streamer específico.
+- Filtra os dados pelo nome do streamer.
+- Calcula a média de espectadores, o tempo total de visualização e o tempo total de transmissão.
+- Retorna as estatísticas em formato JSON.
 
-#### `getTopChannelByStreamTime(self, top_n=10)`
-Obtém os principais canais pelo tempo de transmissão:
-- **Parâmetros**: `top_n` (opcional, padrão é 10) - o número de canais a serem retornados.
-- **Retorno**: DataFrame com os principais canais pelo tempo de transmissão.
+#### 4. `getTopChannelByStreamTime(self, top_n=10)`
+Calcula e retorna os canais com mais tempo de transmissão.
+- Agrupa os dados pelo nome do canal e soma o tempo de transmissão em minutos.
+- Retorna os top `n` canais com maior tempo de transmissão.
 
-#### `getAverageViewersByChannel(self, top_n=10)`
-Obtém a média de espectadores por canal:
-- **Parâmetros**: `top_n` (opcional, padrão é 10) - o número de canais a serem retornados.
-- **Retorno**: DataFrame com a média de espectadores por canal.
+#### 5. `getAverageViewersByChannel(self, top_n=10)`
+Calcula e retorna a média de espectadores por canal.
+- Agrupa os dados pelo nome do canal e calcula a média de espectadores.
+- Retorna os top `n` canais com a maior média de espectadores.
 
 ### Sugestão de Commit
 
-Levando em consideração que esta é a primeira versão do script, podemos elaborar a seguinte mensagem de commit:
+Com base nas funcionalidades descritas e nas práticas recomendadas para mensagens de commit, aqui está uma sugestão de commit:
 
 ---
 
-**Título**:
+**Título do Commit:**
+
 ```
-:tada: :sparkles: Commit inicial com funcionalidades de análise de canais Twitch
+✨ :sparkles: Adiciona classe para análise de dados do Twitch
 ```
 
-**Descrição**:
+**Descrição do Commit:**
+
 ```
-- Implementação da classe `dataanalytics` para analisar dados de canais Twitch.
-- Métodos implementados:
-  - `__init__`: Inicialização da classe com DataFrame do conjunto de dados.
-  - `getTopChannelByViewers`: Obtém os canais com mais espectadores.
-  - `getStreamerStats`: Obtém estatísticas detalhadas de um streamer específico.
-  - `getTopChannelByStreamTime`: Obtém os canais com mais tempo de transmissão.
-  - `getAverageViewersByChannel`: Obtém a média de espectadores por canal.
-- Utilização de bibliotecas pandas e json para manipulação e formatação dos dados.
-- Impressão de mensagens de log para acompanhar o processo das funcionalidades.
+- Implementa a classe `dataanalytics` para análise de dados do Twitch.
+- `__init__`: Inicializa a classe com DataFrame e configura estruturas de dados internas.
+- `getTopChannelByViewers`: Retorna os canais com maior tempo de visualização.
+- `getStreamerStats`: Retorna estatísticas detalhadas de um streamer específico.
+- `getTopChannelByStreamTime`: Retorna os canais com maior tempo de transmissão.
+- `getAverageViewersByChannel`: Retorna a média de espectadores por canal.
 ```
 
 ---
 
-Essa mensagem de commit fornece uma visão clara e concisa das funcionalidades implementadas e o propósito da nova classe `dataanalytics`.
+Esta mensagem de commit é clara e engloba as funcionalidades principais da classe, permitindo que outros desenvolvedores compreendam facilmente as alterações introduzidas.
