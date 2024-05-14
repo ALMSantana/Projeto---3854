@@ -1,7 +1,11 @@
 from assistente_base import AssistenteBase
+from util_io import pegar_nome_arquivo_json, calcular_diferencas, ler_conteudo_arquivo, salvar_json
 
 class AssistenteCommit(AssistenteBase):
   def __init__(self, caminho_arquivo: str):
+    self.caminho_arquivo = caminho_arquivo
+    self.caminho_json = pegar_nome_arquivo_json(self.caminho_arquivo)
+    self.gerar_resposta()
     self.nome = self.get_nome_assistente()
     self.instrucoes = self.get_instrucoes_assistente()
     super().__init__(self.nome, self.instrucoes, caminho_arquivo)
@@ -13,7 +17,7 @@ class AssistenteCommit(AssistenteBase):
     return "Assistente de Commit"
   
   def get_instrucoes_assistente(self):
-    return """
+    return f"""
     Assuma que você é um assistente especialista em gerar commits para o Github.
     Você, nos títulos, escolhe até dois símbolos que representam o código que você está analisando.
 
