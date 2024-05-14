@@ -3,6 +3,7 @@ from assistente_base import AssistenteBase
 from assistente_commit import AssistenteCommit
 from assistente_documentacao import AssistenteDocumentacao
 from assistente_revisao import AssistenteRevisao
+from assistente_teste_unitario import AssistenteTesteUnitario
 from util_io import salvar_resposta_ia, salvar_resposta_ia_binario
 import os
 
@@ -30,7 +31,9 @@ class InterfaceChat():
                 salvar_resposta_ia_binario(self.chat.caminho_arquivo, arquivo_dados, "Codigo-Documentacao")
               elif isinstance(self.chat, AssistenteRevisao):
                 salvar_resposta_ia_binario(self.chat.caminho_arquivo, arquivo_dados, "Codigo-Revisao")
-                        
+              elif isinstance(self.chat, AssistenteTesteUnitario):    
+                salvar_resposta_ia_binario(self.chat.caminho_arquivo, arquivo_dados, "Codigo-Teste")     
+
         lista_respostas.append(mensagem.text.value)
 
     dados_salvos = "".join(lista_respostas)

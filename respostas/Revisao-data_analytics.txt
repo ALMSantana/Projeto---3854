@@ -1,3 +1,3 @@
-A correção do arquivo foi concluída. Você pode baixar o arquivo corrigido usando o link abaixo:
+O script corrigido foi gerado com sucesso. Você pode baixá-lo através do link abaixo:
 
-[Download código corrigido](sandbox:/mnt/data/corrected_data_analytics.py)
+[Download Script Corrigido](sandbox:/mnt/data/corrected_data_analytics.py)
