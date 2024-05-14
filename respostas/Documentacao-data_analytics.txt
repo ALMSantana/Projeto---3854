@@ -1,3 +1,3 @@
-O script com as DocStrings foi gerado e salvo com sucesso. Você pode baixar o arquivo usando o link abaixo:
+O script foi documentado com sucesso de acordo com as convenções do PEP 257 e salvo em um novo arquivo. Você pode baixar o arquivo documentado através do link abaixo:
 
-[data_analytics_with_docstrings.py](sandbox:/mnt/data/data_analytics_with_docstrings.py)
+[documented_data_analytics.py](sandbox:/mnt/data/documented_data_analytics.py)

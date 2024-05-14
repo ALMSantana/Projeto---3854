@@ -2,6 +2,7 @@ from openai import OpenAI
 from assistente_base import AssistenteBase
 from assistente_commit import AssistenteCommit
 from assistente_documentacao import AssistenteDocumentacao
+from assistente_revisao import AssistenteRevisao
 from util_io import salvar_resposta_ia, salvar_resposta_ia_binario
 import os
 
@@ -25,7 +26,11 @@ class InterfaceChat():
               arquivo_binario_dados = self.chat.cliente.files.content(resposta_open_ai.id)
               arquivo_dados = arquivo_binario_dados.read()
 
-              salvar_resposta_ia_binario(self.chat.caminho_arquivo, arquivo_dados, "Codigo")
+              if isinstance(self.chat, AssistenteDocumentacao):
+                salvar_resposta_ia_binario(self.chat.caminho_arquivo, arquivo_dados, "Codigo-Documentacao")
+              elif isinstance(self.chat, AssistenteRevisao):
+                salvar_resposta_ia_binario(self.chat.caminho_arquivo, arquivo_dados, "Codigo-Revisao")
+                        
         lista_respostas.append(mensagem.text.value)
 
     dados_salvos = "".join(lista_respostas)
@@ -34,6 +39,8 @@ class InterfaceChat():
       salvar_resposta_ia(self.chat.caminho_arquivo, dados_salvos, "Commit")
     elif isinstance(self.chat, AssistenteDocumentacao):
       salvar_resposta_ia(self.chat.caminho_arquivo, dados_salvos, "Documentacao")
+    elif isinstance(self.chat, AssistenteRevisao):
+      salvar_resposta_ia(self.chat.caminho_arquivo, dados_salvos, "Revisao")
 
   def conversar(self, mensagem_usuario : str):
     self.chat.cliente.beta.threads.messages.create(
