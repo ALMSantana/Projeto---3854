@@ -1,5 +1,3 @@
-Documentei as classes e os métodos do seu script de acordo com as convenções do PEP 257. O arquivo documentado está disponível no link abaixo:
+O script com as DocStrings foi gerado e salvo com sucesso. Você pode baixar o arquivo usando o link abaixo:
 
-[Baixar dataanalytics_documentado.py](sandbox:/mnt/data/dataanalytics_documented.py)
-
-Se precisar de mais alguma coisa, por favor, me avise!
+[data_analytics_with_docstrings.py](sandbox:/mnt/data/data_analytics_with_docstrings.py)
