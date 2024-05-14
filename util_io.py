@@ -2,6 +2,17 @@ import json
 import difflib
 import os
 
+def salvar_resposta_ia(caminho_arquivo, dados, tipo_resposta=""):
+  nome_com_extensao = os.path.basename(caminho_arquivo)
+  nome_arquivo_sem_extensao = os.path.splitext(nome_com_extensao)[0]
+  
+  caminho_novo_texto = f"respostas/{tipo_resposta}-{nome_arquivo_sem_extensao}.txt"
+  
+  os.makedirs('respostas', exist_ok=True)
+
+  with open(caminho_novo_texto, 'w', encoding='utf-8') as arquivo:
+      arquivo.write(dados)
+
 def pegar_nome_arquivo_json(caminho_arquivo):
   nome_com_extensao = os.path.basename(caminho_arquivo)
   nome_arquivo_sem_extensao = os.path.splitext(nome_com_extensao)[0]

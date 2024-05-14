@@ -1,0 +1,56 @@
+Aqui está a análise e a descrição dos métodos contidos na classe `dataanalytics` no script analisado:
+
+### Classe `dataanalytics`
+
+#### `__init__(self, data: DataFrame)`
+Inicializa a classe:
+- **Parâmetros**: `data` (DataFrame) - o conjunto de dados inicial.
+- **Atributos**: `self.data`, `self.copy_data`, `self.data_backup`, `self.temp_data`, `self.cache`.
+
+#### `getTopChannelByViewers(self, top_n=10)`
+Obtém os principais canais pelo tempo de visualização:
+- **Parâmetros**: `top_n` (opcional, padrão é 10) - o número de canais a serem retornados.
+- **Retorno**: DataFrame com os principais canais pelo tempo de visualização.
+
+#### `getStreamerStats(self, streamer: str)`
+Obtém estatísticas de um streamer específico:
+- **Parâmetros**: `streamer` (str) - nome do streamer.
+- **Retorno**: JSON com estatísticas do streamer (visualizações médias, tempo total de visualização, tempo de transmissão).
+
+#### `getTopChannelByStreamTime(self, top_n=10)`
+Obtém os principais canais pelo tempo de transmissão:
+- **Parâmetros**: `top_n` (opcional, padrão é 10) - o número de canais a serem retornados.
+- **Retorno**: DataFrame com os principais canais pelo tempo de transmissão.
+
+#### `getAverageViewersByChannel(self, top_n=10)`
+Obtém a média de espectadores por canal:
+- **Parâmetros**: `top_n` (opcional, padrão é 10) - o número de canais a serem retornados.
+- **Retorno**: DataFrame com a média de espectadores por canal.
+
+### Sugestão de Commit
+
+Levando em consideração que esta é a primeira versão do script, podemos elaborar a seguinte mensagem de commit:
+
+---
+
+**Título**:
+```
+:tada: :sparkles: Commit inicial com funcionalidades de análise de canais Twitch
+```
+
+**Descrição**:
+```
+- Implementação da classe `dataanalytics` para analisar dados de canais Twitch.
+- Métodos implementados:
+  - `__init__`: Inicialização da classe com DataFrame do conjunto de dados.
+  - `getTopChannelByViewers`: Obtém os canais com mais espectadores.
+  - `getStreamerStats`: Obtém estatísticas detalhadas de um streamer específico.
+  - `getTopChannelByStreamTime`: Obtém os canais com mais tempo de transmissão.
+  - `getAverageViewersByChannel`: Obtém a média de espectadores por canal.
+- Utilização de bibliotecas pandas e json para manipulação e formatação dos dados.
+- Impressão de mensagens de log para acompanhar o processo das funcionalidades.
+```
+
+---
+
+Essa mensagem de commit fornece uma visão clara e concisa das funcionalidades implementadas e o propósito da nova classe `dataanalytics`.
