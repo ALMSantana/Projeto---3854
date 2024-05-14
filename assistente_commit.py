@@ -1,5 +1,9 @@
 from assistente_base import AssistenteBase
+from datetime import datetime
 from util_io import pegar_nome_arquivo_json, calcular_diferencas, ler_conteudo_arquivo, salvar_json
+from util_hash import gerar_hash
+import os
+import json
 
 class AssistenteCommit(AssistenteBase):
   def __init__(self, caminho_arquivo: str):
@@ -11,7 +15,36 @@ class AssistenteCommit(AssistenteBase):
     super().__init__(self.nome, self.instrucoes, caminho_arquivo)
 
   def gerar_resposta(self):
-    pass
+    hash_documento = gerar_hash(self.caminho_arquivo)
+    data_atual = datetime.now().isoformat()
+    conteudo_atual = ler_conteudo_arquivo(self.caminho_arquivo)
+
+    if os.path.exists(self.caminho_json):
+      with open(self.caminho_json, 'r', encoding="utf-8") as file:
+        dados = json.load(file)
+        conteudo_anterior = dados["conteudo"]
+    else:
+      dados = {
+        'caminho_arquivo' : self.caminho_arquivo,
+        'data_criacao' : data_atual,
+        'data_atualizacao' : data_atual,
+        'hash_atual':hash_documento,
+        'versao' : 1,
+        'conteudo': conteudo_atual,
+        'mudancas' : ''
+      }
+      salvar_json(self.caminho_json, dados)
+    
+    if dados['hash_atual'] != hash_documento:
+      dados['data_atualizacao'] = data_atual
+      dados['hash_atual'] = hash_documento
+      dados['versao'] += 1
+      dados['conteudo'] = conteudo_atual
+      dados['mudancas'] = calcular_diferencas(conteudo_anterior, conteudo_atual)
+
+      salvar_json(self.caminho_json, dados)
+
+    return dados
 
   def get_nome_assistente(self):
     return "Assistente de Commit"

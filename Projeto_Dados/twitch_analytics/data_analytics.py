@@ -5,6 +5,7 @@ import json
 class dataanalytics:
 
     def __init__(self, data : DataFrame):
+        print("Teste")
         self.data = data
         self.copy_data = data.copy()
         self.data_backup = self.data
